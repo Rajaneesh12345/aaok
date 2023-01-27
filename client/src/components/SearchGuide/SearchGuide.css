@@ -1,0 +1,45 @@
+.instr-list li {
+  font-size: 1rem;
+}
+
+.menu-link {
+  color: orange;
+}
+
+.menu-link:hover {
+  color: white !important;
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+.help-section ul li {
+  margin-bottom: 8px;
+}
+
+.help-section ul li b {
+  color: orange;
+}
+
+#help-menu {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 24px;
+}
+
+#help-menu ol {
+  counter-reset: item;
+}
+
+#help-menu li {
+  display: block;
+  margin-bottom: 4px;
+}
+
+#help-menu li li:first-child {
+  margin-top: 4px;
+}
+
+#help-menu li:before {
+  content: counters(item, ".") ": ";
+  counter-increment: item;
+}

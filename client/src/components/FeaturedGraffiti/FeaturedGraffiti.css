@@ -1,0 +1,58 @@
+.featured-img {
+  max-height: 100%;
+}
+
+#featured-img-sizer {
+  width: 70% !important;
+}
+
+.featured-img-row {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  #featured-img-sizer {
+    width: 100% !important;
+  }
+
+  .featured-card {
+    width: 100% !important;
+  }
+
+  .featured-card .card-img-top {
+    height: 400px !important;
+  }
+
+  .featured-card-container {
+    width: 100% !important;
+  }
+}
+
+.featured-card-display {
+  justify-content: space-around;
+}
+
+.featured-card-container {
+  width: 40%;
+  min-width: 300px;
+}
+
+.featured-card-container a {
+  color: white !important;
+}
+
+.featured-card {
+  width: 100%;
+  background-color: var(--backgroundColor) !important;
+  margin-bottom: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.featured-card .card-img-top {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+  margin-top: 8px;
+}
+

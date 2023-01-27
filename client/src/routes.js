@@ -1,0 +1,25 @@
+const routes = Object.freeze({
+  acknowledgements: "/acknowledgements",
+  atlas: "/intro-and-timeline",
+  graffiti: "/featured-graffiti",
+  graffitiNanhyang: "/nanhyang",
+  graffitiChungin: "/chungin-friends",
+  graffitiYunsaguk: "/yun-saguk",
+  graffitiKyongsok: "/kyongsok",
+  graffitiKimhajong: "/kim-hajong",
+  graffitiHonghyonju: "/hong-hyonju",
+  home: "/",
+  kumgangsan: "/kumgangsan",
+  kumgangsanManpoktong: "/manpoktong",
+  kumgangsanOngnyudong: "/ongnyudong",
+  kumgangsanPodogam: "/podogam",
+  kumgangsanKuryong: "/kuryong",
+  kumgangsanSamburam: "/samburam",
+  kumgangsanMyogilsang: "/myogilsang",
+  publications: "/publications-and-presentations",
+  search: "/search",
+  searchGuide: "/guide",
+  searchResult: "/result",
+});
+
+export { routes };

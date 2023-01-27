@@ -1,0 +1,66 @@
+.info-column {
+ background-color: var(--accentThree);
+ border-radius: 0.25em;
+ justify-content: center;
+}
+
+.info-column h5 {
+  font-weight: bold;
+}
+
+.info-column div.list-group {
+  margin: 12px;
+  padding: 0px;
+}
+
+.info-column div.list-group:not(:last-child) {
+  border-right: 1px solid white;
+}
+
+.info-column div.list-group-item {
+  padding-bottom: 0px;
+  background-color: var(--accentThree);
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: black;
+}
+
+.clickable-img {
+  padding: 2px;
+}
+
+.clickable-img:hover {
+  padding: 0px !important;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+#modal-img {
+  background-color: var(--backgroundColor) !important;
+}
+
+#entire-modal .modal-content {
+  background-color: var(--backgroundColor) !important;
+}
+
+#entire-modal .modal-header {
+  border-bottom: none;
+}
+
+#entire-modal .featured-card {
+  border-radius: none !important;
+  border: none !important;
+}
+
+#social-status-column .col-4 {
+  min-width: 6rem;
+}
+
+/* refer to min-width set in #social-status-column.col-4 */
+@media(min-width: 5.99rem){
+  #social-status-column p {
+    margin-bottom: 5px !important;
+  }
+}

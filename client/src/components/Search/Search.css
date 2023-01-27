@@ -1,0 +1,223 @@
+#banner {
+  max-width: 100%;
+  height: auto;
+}
+
+#search-panel {
+  width: 100%;
+}
+
+#search-container {
+  color: black;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  background-color: var(--accentThree);
+  /*border-radius: 0.25rem;*/
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+#search-container span.badge {
+  padding-left: 0px;
+  margin-top: 8px;
+  color: white;
+  font-size: .9rem;
+}
+
+#search-container span.badge:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+#accordion-body {
+  padding-top: 8px;
+  padding-left: calc(1px + (var(--bs-gutter-x) / 2));
+  padding-right: calc(1px + (var(--bs-gutter-x) / 2));
+  columns: 6rem 3;
+}
+
+@media(min-width: 991px) {
+  #adv-col1 {
+    border-right: 2px solid white;
+  }
+
+  #adv-col2 {
+    border-right: 2px solid white;
+  }
+}
+
+#help-link {
+  width: unset;
+  padding-top: 5px;
+  text-decoration: underline;
+  text-decoration-color: white;
+  color: white;
+}
+
+#help-link:hover {
+  color: orange !important;
+  text-decoration-color: orange;
+}
+
+.dropdown-container-left {
+  width: 50%;
+  padding-right: 4px;
+}
+
+.dropdown-container {
+  float: right;
+}
+
+#filter-dropdown {
+  background-color: white;
+  color: black;
+  border-color: #ced4da;
+  width: 100%;
+}
+
+#sort-dropdown {
+  background-color: white;
+  color: black;
+  border-color: #ced4da;
+  width: 100%;
+}
+
+#advanced-accordion {
+  background-color: unset;
+  border: unset;
+}
+
+.accentThree button {
+  color: white !important;
+  border: unset !important;
+  background-color: var(--accentThree) !important;
+}
+
+.accentThree button:hover {
+  transition: 0.15s;
+  transition-property: background-color;
+  background-color: #8c817a !important;
+}
+
+@media (max-width: 1200px) {
+  #search-panel {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+
+.orange {
+  color: white !important;
+  background-color: orange !important;
+  border-color: orange !important;
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
+}
+
+.orange:hover {
+  transition: 0.15s;
+  transition-property: background-color;
+  background-color: #e69c15 !important;
+}
+
+.orange:active {
+  transition: 0.15s;
+  transition-property: background-color;
+  background-color: #cc8f1f !important;
+}
+
+.advanced-option-title {
+  color: white;
+  margin-top: .8rem;
+  margin-bottom: 0px;
+}
+
+.advanced-option-select-all {
+  background-color: unset;
+  border: unset;
+  font-size: 0.75rem;
+  height: 0.75rem;
+  padding: 0px;
+  color: white;
+}
+
+.advanced-option-select-all:hover {
+  background-color: unset;
+  border: unset;
+  font-size: 0.75rem;
+  height: 0.75rem;
+  padding: 0px;
+  color: orange;
+}
+
+.results-container {
+  color: black;
+  font-size: 0.8rem;
+}
+
+.results-container div.list-group {
+  padding: 0px;
+}
+
+.results-container div.list-group-item {
+  padding-bottom: 0px;
+  background-color: var(--accentThree);
+  color: black;
+}
+
+.results-container .list-group-item:first-child {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.results-container .list-group-item:hover {
+  background-color: #8c817a !important;
+  -webkit-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+
+}
+
+
+.results-container .list-group-item.no-hover:hover {
+  background-color: var(--accentThree) !important;
+  color: black;
+}
+
+.results-header {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--accentThree);
+  color: white;
+}
+
+.page-settings {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+}
+
+.page-settings .btn {
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: -8px;
+  width: 40px;
+  padding-top: 3px !important;
+  padding-bottom: 5px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
+
+.page-settings .left-btns {
+  margin-right: 10px;
+}
+
+.page-settings .right-btns {
+  margin-left: 10px;
+}

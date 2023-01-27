@@ -1,0 +1,147 @@
+.search-title {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.menu-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-bottom: 1%;
+}
+
+@media (max-width: 875px) {
+  .search-title {
+    display: inline;
+    flex-flow: unset;
+  }
+
+  .menu-row {
+    height: 750px;
+    padding-top: 15px;
+    align-content: flex-start;
+  }
+
+  .home-menu-item {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    margin-top: 10px !important;
+    width: 90% !important;
+    height: 110px !important;
+    font-size: 20px !important;
+  }
+
+  .info {
+    width: 90% !important;
+  }
+
+  .title-bg {
+    width: 90% !important;
+  }
+}
+
+.home-menu-item {
+  margin-top: 3%;
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  font-size: 28.75px;
+  width: calc(230px + 3vw);
+  height: calc(120px + 3vw);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.small-title-item {
+  font-size: 24px;
+}
+
+.smaller-title-item {
+  font-size: 20px;
+}
+
+.home-menu-item a {
+  color: white !important;
+}
+
+.home-menu-item a:hover {
+  text-decoration: none;
+}
+
+.home-menu-item:hover {
+  background-color: rgba(50, 43, 38, 1);
+  -webkit-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+}
+
+.home-menu-item a:hover .menu-title {
+  text-decoration: underline !important;
+}
+
+.menu-title {
+  font-weight: bold;
+}
+
+.menu-tooltip {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.menu-tooltip-kr {
+  font-size: 12px;
+}
+
+.home-menu-item a:hover span.menu-tooltip,
+.home-menu-item a:hover span.menu-tooltip-kr {
+  text-decoration: none !important;
+}
+
+.title-bg {
+  margin-top: 16px;
+  border-radius: 0.75rem !important;
+  padding: calc(10px + 1vw);
+}
+
+.title-main {
+  font-weight: bold;
+  font-size: calc(18px + 3.2vw);
+}
+
+.title-sub {
+  font-size: calc(12px + 2vw);
+}
+
+.info-row {
+  margin-top: 3%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.info {
+  max-width: 912px;
+  width: 75%;
+  text-align: left !important;
+}
+
+.restricted-width {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.info-kr {
+  font-size: calc(12px + 1vw);
+}
+
+.text-link {
+  color: orange;
+  text-decoration: underline;
+}
+
+.text-link:hover {
+  color: white;
+}

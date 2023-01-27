@@ -1,0 +1,31 @@
+.contributors {
+  padding-left: 24px;
+}
+
+.img-portrait {
+  max-width: 100%;
+  max-height: 250px;
+}
+
+.additional-titles i div.row {
+  padding-right: 1rem;
+}
+
+@media (max-width: 1400px) {
+  .mobile-shrink {
+    font-size: 1.75rem !important;
+  }
+
+  .portrait {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+  }
+
+  .additional-titles {
+    margin-bottom: 1.5rem;
+  }
+}
