@@ -3,8 +3,9 @@ const { getNewConnectionObject, string } = require('../connection');
 exports.getImg = (req, res) => {
 	const { id } = req.params;
 	const connection = getNewConnectionObject();
+	if (!id) return res.status(200).json({ result: '' });
 	connection.query(
-		`SELECT * FROM picture_links WHERE PictureId=${+id}`,
+		`SELECT link FROM picture_links WHERE PictureId=${+id}`,
 		(err, result) => {
 			if (err) {
 				console.log(err);
@@ -13,6 +14,7 @@ exports.getImg = (req, res) => {
 					result: [],
 				});
 			} else {
+				console.log(result);
 				res.status(200).json({
 					ok: true,
 					result,

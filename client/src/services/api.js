@@ -38,7 +38,7 @@ const getSearchResults = async (filters, sortOption) => {
 
 const getIndividualInfo = async id => {
 	let err = false;
-	const response = await fetch('/api/individual', {
+	const response = await fetch('http://localhost:5000/api/individual', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -48,15 +48,14 @@ const getIndividualInfo = async id => {
 	if (!response.ok) {
 		err = true;
 	}
-	const data = (await response.json())[0][0];
-	console.log('asdf', data);
+	let { data } = await response.json();
 
 	return [data, err];
 };
 
 const getIndividualImg = async id => {
 	let err = false;
-	const response = await fetch(`/api/img/${id}`, {
+	const response = await fetch(`http://localhost:5000/api/img/${id}`, {
 		headers: {
 			'Cache-Control': 'public, max-age=604800, immutable',
 		},
@@ -65,14 +64,13 @@ const getIndividualImg = async id => {
 		err = true;
 	}
 	const data = await response.json();
-	const imgObjURL = data?.result[0]?.link;
-	console.log('imgObjURL', imgObjURL);
+	const imgObjURL = data['result'];
 	return [imgObjURL, err];
 };
 
 const getOthersInCluster = async cid => {
 	let err = false;
-	const response = await fetch(`/api/in-cluster/${cid}`);
+	const response = await fetch(`http://localhost:5000/api/in-cluster/${cid}`);
 	if (!response.ok) {
 		err = true;
 	}
@@ -83,7 +81,7 @@ const getOthersInCluster = async cid => {
 
 const getRelated = async pid => {
 	let err = false;
-	const response = await fetch(`/api/related/${pid}`);
+	const response = await fetch(`http://localhost:5000/api/related/${pid}`);
 	if (!response.ok) {
 		err = true;
 	}
@@ -94,7 +92,9 @@ const getRelated = async pid => {
 
 const getNumberOfLayers = async cid => {
 	let err = false;
-	const response = await fetch(`/api/number-of-layers/${cid}`);
+	const response = await fetch(
+		`http://localhost:5000/api/number-of-layers/${cid}`
+	);
 	if (!response.ok) {
 		err = true;
 	}

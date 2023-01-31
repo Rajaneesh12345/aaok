@@ -1,15 +1,13 @@
 let { getNewConnectionObject, string: str, ref } = require('../connection');
-const connection = getNewConnectionObject();
 
 exports.search = (req, res) => {
-	// console.log(string);
+	const connection = getNewConnectionObject();
+
 	const {
 		filters: { advancedFilters, nameFilter },
 		sort,
 	} = req.body;
 
-	if (advancedFilters.Calligraphy.length > 0) {
-	}
 	let string = str;
 	for (let key in advancedFilters) {
 		if (key === 'Calligraphy') {
@@ -99,6 +97,25 @@ exports.search = (req, res) => {
 		res.status(200).json({
 			ok: true,
 			result,
+		});
+	});
+};
+
+exports.getIndividualInfo = (req, res) => {
+	const { id } = req.body;
+	const connection = getNewConnectionObject();
+	connection.query(`${str} WHERE people.PersonId="${id}"`, (err, result) => {
+		if (err) {
+			console.log(err);
+			return res.status(200).json({
+				ok: false,
+				result: [],
+			});
+		}
+		// console.log(result);
+		res.status(200).json({
+			ok: true,
+			data: result[0],
 		});
 	});
 };

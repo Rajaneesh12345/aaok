@@ -1,6 +1,5 @@
 import './InfoPage.css';
 import {
-	getIndividualImg,
 	getIndividualInfo,
 	getNumberOfLayers,
 	getOthersInCluster,
@@ -28,6 +27,7 @@ const InfoPage = props => {
 	const [isRelated, setIsRelated] = useState(null);
 	const [isRelatedIsLoading, setIsRelatedIsLoading] = useState(false);
 	const { setAdjacentPersonIds, adjacentResults } = props;
+
 	useEffect(() => {
 		const asyncEffect = async () => {
 			try {
@@ -51,21 +51,21 @@ const InfoPage = props => {
 		};
 		asyncEffect();
 	}, [id]);
+
 	useEffect(() => {
 		const asyncEffect = async () => {
 			if (individualInfo) {
 				try {
 					setImgIsLoading(true);
-					const [imgObjURL, err] = await getIndividualImg(
-						individualInfo['PictureId']
-					);
-					if (err) {
-						setImgIsLoading(false);
-						setImg(null);
-						return;
-					}
+					// const [imgObjURL, err] = await getIndividualImg(
+					// 	individualInfo['PictureId']
+					// if (err) {
+					// 	setImgIsLoading(false);
+					// 	setImg(null);
+					// 	return;
+					// }
 					setImgIsLoading(false);
-					setImg(imgObjURL);
+					setImg(individualInfo['link']);
 				} catch (e) {
 					setImgIsLoading(false);
 					setImg(null);
@@ -75,6 +75,7 @@ const InfoPage = props => {
 		};
 		asyncEffect();
 	}, [individualInfo]);
+
 	useEffect(() => {
 		const asyncEffect = async () => {
 			if (individualInfo) {
