@@ -6,5 +6,6 @@ const imageController = require('../controllers/imageController');
 
 router.post('/searchfiltered', searchController.search);
 router.get('/img/:id', imageController.getImg);
+router.get('imgdata/:id', imageController.getImgData);
 
 module.exports = router;
