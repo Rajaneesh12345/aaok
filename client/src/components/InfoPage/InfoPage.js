@@ -65,7 +65,11 @@ const InfoPage = props => {
 					// 	return;
 					// }
 					setImgIsLoading(false);
-					setImg(individualInfo['link']);
+					if (individualInfo['link']) {
+						setImg(individualInfo['link']);
+					} else {
+						setImg('/none.png');
+					}
 				} catch (e) {
 					setImgIsLoading(false);
 					setImg(null);

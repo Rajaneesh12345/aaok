@@ -1,19 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 function getNewConnectionObject() {
-	const connection = mysql.createConnection({
-		host: process.env.MYSQL_HOST,
-		user: process.env.MYSQL_USER,
-		password: process.env.MYSQL_PASSWORD,
-		database: process.env.MYSQL_DBNAME,
-	});
-
 	// const connection = mysql.createConnection({
-	// 	host: '127.0.0.1',
-	// 	user: 'root',
-	// 	password: 'Raj@142181',
-	// 	database: 'stiller',
+	// 	host: process.env.MYSQL_HOST,
+	// 	user: process.env.MYSQL_USER,
+	// 	password: process.env.MYSQL_PASSWORD,
+	// 	database: process.env.MYSQL_DBNAME,
 	// });
+
+	const connection = mysql.createConnection({
+		host: 'aaok.cqbyrq1rhiy1.us-east-2.rds.amazonaws.com',
+		user: 'admin',
+		password: '12345678',
+		database: 'stiller',
+	});
 	return connection;
 }
 
@@ -66,49 +66,3 @@ const ref = {
 };
 
 module.exports = { getNewConnectionObject, string, ref };
-
-const obj = {
-	Calligraphy: ['sealCursive', 'regular'], //
-	'Inscription Type': [
-		'agnatic',
-		'agnaticAssociative',
-		'associative',
-		'singleName',
-	],
-	'Government Post': [
-		'accountant',
-		'censor',
-		'commander',
-		'governor',
-		'guard',
-		'inspector',
-		'magistrate', //
-		'minister',
-		'primeMinister', //
-		'secretary',
-		'stateCouncilor',
-		'govUndeterminedOther',
-	],
-	Location: [
-		'jadeStreamRavine',
-		'manmulcho',
-		'myogilsangBuddha',
-		'nineDragonFalls',
-	],
-	'Social Status': [
-		'chungin',
-		'commoner',
-		'female',
-		'marginalizedYangban',
-		'monk',
-		'slave',
-		'yangban',
-		'ssUndetermined',
-	],
-	'Degree Holders': [
-		'civilExam',
-		'militaryExam',
-		'technicalExam',
-		'dhUndetermined',
-	],
-};
