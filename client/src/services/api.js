@@ -1,6 +1,6 @@
 // filters of type: {advancedOptionsKey[string]: optionValue[Set<string>]}
 const getSearchResults = async (filters, sortOption) => {
-	console.log('getSearchResults', filters);
+	// console.log('getSearchResults', filters);
 	let filtersAsArrays = {};
 	Object.keys(filters.advancedFilters).forEach(key => {
 		if (filters.advancedFilters[key].length > 0) {
@@ -18,7 +18,7 @@ const getSearchResults = async (filters, sortOption) => {
 	};
 
 	let err = false;
-	console.log(filters, sortOption);
+	// console.log(filters, sortOption);
 	const response = await fetch(
 		'https://aaokbackend.onrender.com/api/searchfiltered',
 		{
@@ -29,13 +29,13 @@ const getSearchResults = async (filters, sortOption) => {
 			body: JSON.stringify({ filters: preparedFilters, sort: sortOption }),
 		}
 	);
-	console.log(response);
+	// console.log(response);
 	if (!response.ok) {
 		err = true;
 		console.log('error', err);
 	}
 	const data = await response.json();
-	console.log('data', data);
+	// console.log('data', data);
 	return [data, err];
 };
 
@@ -86,7 +86,7 @@ const getOthersInCluster = async cid => {
 		err = true;
 	}
 	const data = (await response.json())[0];
-	console.log('otherInCluster', data);
+	// console.log('otherInCluster', data);
 	return [data, err];
 };
 
@@ -99,7 +99,7 @@ const getRelated = async pid => {
 		err = true;
 	}
 	const data = (await response.json())[0];
-	console.log('related', data);
+	// console.log('related', data);
 	return [data, err];
 };
 
@@ -112,7 +112,7 @@ const getNumberOfLayers = async cid => {
 		err = true;
 	}
 	const data = (await response.json())[0];
-	console.log('otherInCluster', data);
+	// console.log('otherInCluster', data);
 	return [data, err];
 };
 

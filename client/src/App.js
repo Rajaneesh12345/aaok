@@ -23,7 +23,7 @@ const App = () => {
 		window.localStorage.getItem('searchResults')
 	);
 	const storedPageNum = JSON.parse(window.localStorage.getItem('pageNum'));
-	console.log('storedpagenum', storedPageNum);
+	// console.log('storedpagenum', storedPageNum);
 	const storedEnabledSearchFilters = JSON.parse(
 		window.localStorage.getItem('enabledSearchFilters')
 	);

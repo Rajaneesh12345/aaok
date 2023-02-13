@@ -250,7 +250,7 @@ const InfoPage = props => {
 				{imgModal}
 				<Card className="featured-card round-bg">
 					{!imgIsLoading ? (
-						img ? (
+						individualInfo ? (
 							<img
 								className="round-bg mt-2 clickable-img"
 								src={img}
@@ -263,13 +263,19 @@ const InfoPage = props => {
 								className="centered-row position-sticky"
 							>
 								<i>
-									<h4 style={{ marginTop: '18vh' }}>
-										Image not found.
-									</h4>
+									<h4 style={{ marginTop: '18vh' }}>Loading...</h4>
 								</i>
 							</div>
 						)
 					) : (
+						// ) : (
+						// 	<img
+						// 		className="round-bg mt-2 clickable-img"
+						// 		src="/none.png"
+						// 		onClick={() => setShowImgModal(true)}
+						// 		alt="Individual."
+						// 	/>
+						// )
 						<div
 							style={{ height: '45vh' }}
 							className="centered-row position-sticky"
@@ -283,7 +289,12 @@ const InfoPage = props => {
 						{individualInfo ? (
 							<>
 								Location in Image:{' '}
-								<i>{individualInfo['LocationInPicture'].trim()}.</i>
+								<i>
+									{individualInfo['LocationInPicture']
+										? individualInfo['LocationInPicture'].trim()
+										: ''}
+									.
+								</i>
 							</>
 						) : null}
 					</Card.Body>
