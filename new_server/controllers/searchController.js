@@ -7,7 +7,7 @@ exports.search = (req, res) => {
 		filters: { advancedFilters, nameFilter },
 		sort,
 	} = req.body;
-
+	// console.log(advancedFilters);
 	let string = str;
 	for (let key in advancedFilters) {
 		if (key === 'Calligraphy') {
@@ -41,27 +41,20 @@ exports.search = (req, res) => {
 			continue;
 		}
 		if (key === 'Government Post' && advancedFilters[key].length >= 1) {
-			string += `AND ${ref['Government Post']} IN (${advancedFilters[
+			string += `AND ${ref['Government Post']} REGEXP "${advancedFilters[
 				key
 			].reduce((acc, curr) => {
-				if (acc === '') {
-					return acc + "'" + curr + "'";
-				} else {
-					return acc + ",'" + curr + "'";
-				}
-			}, '')}) `;
+				acc += curr + '|';
+				return acc;
+			}, '')}" `;
 		}
 		if (key === 'Location' && advancedFilters[key].length >= 1) {
-			string += `AND ${ref.Location} IN (${advancedFilters[key].reduce(
+			string += `AND ${ref.Location} REGEXP "${advancedFilters[key].reduce(
 				(acc, curr) => {
-					if (acc === '') {
-						return acc + "'" + curr + "'";
-					} else {
-						return acc + ",'" + curr + "'";
-					}
-				},
-				''
-			)}) `;
+					acc += curr + '|';
+					return acc;
+				}
+			)}" `;
 		}
 		if (key === 'Social Status' && advancedFilters[key].length >= 1) {
 			advancedFilters[key].forEach(i => {
@@ -74,18 +67,45 @@ exports.search = (req, res) => {
 			});
 		}
 		if (key === 'Degree Holders' && advancedFilters[key].length >= 1) {
-			string += `AND ${ref['Degree Holders']} IN (${advancedFilters[
+			string += `AND ${ref['Degree Holders']} REGEXP "${advancedFilters[
 				key
 			].reduce((acc, curr) => {
-				if (acc === '') {
-					return acc + "'" + curr + "'";
-				} else {
-					return acc + ",'" + curr + "'";
-				}
-			}, '')}) `;
+				acc += curr + '|';
+				return acc;
+			}, '')}" `;
+		}
+		if (key === 'Travel Period' && advancedFilters[key].length >= 1) {
+			string += `AND ${ref['Travel Period']} REGEXP "${advancedFilters[
+				key
+			].reduce((acc, curr) => {
+				acc += curr + '|';
+				return acc;
+			}, '')}" `;
 		}
 	}
-
+	// console.log(string);
+	switch (sort) {
+		case 'Name (A-Z)':
+			string += `ORDER BY NameEnglish ASC`;
+			break;
+		case 'Name (Z-A)':
+			string += `ORDER BY NameEnglish DESC`;
+			break;
+		case 'Location (A-Z)':
+			string += `ORDER BY LocationEngl ASC`;
+			break;
+		case 'Location (Z-A)':
+			string += `ORDER BY LocationEngl DESC`;
+			break;
+		case 'Reign (Old-New)':
+			string += `ORDER BY ReignEnglish DESC`;
+			break;
+		case 'Reign (New-Old)':
+			string += `ORDER BY ReignEnglish ASC`;
+			break;
+		default:
+			string += ``;
+	}
 	connection.query(string, (err, result) => {
 		if (err) {
 			console.log(err);
