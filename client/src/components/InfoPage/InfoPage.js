@@ -116,13 +116,14 @@ const InfoPage = props => {
 					const [data, err] = await getNumberOfLayers(
 						individualInfo['ContainedInCluster']
 					);
+					// console.log(data);
 					if (err) {
 						setNumberOfLayersIsLoading(false);
 						setNumberOfLayers(null);
 						return;
 					}
 					setNumberOfLayersIsLoading(false);
-					setNumberOfLayers(data ? data[0]['count(*)'] : null);
+					setNumberOfLayers(data?.[0] ? data[0]['count(*)'] : null);
 				} catch (e) {
 					setNumberOfLayersIsLoading(false);
 					setNumberOfLayers(null);
@@ -175,10 +176,11 @@ const InfoPage = props => {
 			</div>
 		</Row>
 	);
-	const sameOrNull = val =>
-		val !== null ? (
-			val
-		) : (
+	const sameOrNull = val => {
+		if (val) {
+			return val;
+		}
+		return (
 			<Badge
 				style={{
 					marginLeft: '2px',
@@ -191,9 +193,10 @@ const InfoPage = props => {
 				???
 			</Badge>
 		);
+	};
 	const yesNoOrNull = val => (
 		<div>
-			{val !== null ? (
+			{val ? (
 				['0', '1', 'true', 'false'].includes(
 					val.toString().toLowerCase()
 				) ? (
@@ -349,9 +352,9 @@ const InfoPage = props => {
 										<br />
 										<p>
 											{individualInfo['NameEnglish']} {'('}
-											{sameOrNull(null)}
-											{'-'}
 											{sameOrNull(individualInfo['BirthYear'])}
+											{'-'}
+											{sameOrNull(individualInfo['DeathYear'])}
 											{')'}
 											<br />
 											{individualInfo['NameKorean']}
@@ -456,9 +459,8 @@ const InfoPage = props => {
 										<h5>Location:</h5>
 										<br />
 										<p>
-											{sameOrNull(
-												individualInfo['SubLocationEngl']
-											) + ', '}
+											{sameOrNull(individualInfo['SubLocationEngl'])}
+											{','}
 											<br />
 											{sameOrNull(individualInfo['LocationEngl'])}
 											<div style={{ fontSize: '.7rem' }}>
@@ -468,33 +470,31 @@ const InfoPage = props => {
 														individualInfo[
 															'SublocationEnglTranslit'
 														]
-													) +
-														', ' +
-														sameOrNull(
-															individualInfo[
-																'LocationEnglTranslit'
-															]
-														)}
+													)}
+													{', '}
+													{sameOrNull(
+														individualInfo['LocationEnglTranslit']
+													)}
 												</span>
 												<br />
 												<span>
 													{sameOrNull(
 														individualInfo['SublocationKorean']
-													) +
-														', ' +
-														sameOrNull(
-															individualInfo['LocationKorean']
-														)}
+													)}
+													{', '}
+													{sameOrNull(
+														individualInfo['LocationKorean']
+													)}
 												</span>
 												<br />
 												<span>
 													{sameOrNull(
 														individualInfo['SublocationHancha']
-													) +
-														', ' +
-														sameOrNull(
-															individualInfo['LocationHancha']
-														)}
+													)}
+													{', '}
+													{sameOrNull(
+														individualInfo['LocationHancha']
+													)}
 												</span>
 											</div>
 										</p>
@@ -512,14 +512,14 @@ const InfoPage = props => {
 										<h5>Layer in Cluster:</h5>
 										<br />
 										<p>
+											{sameOrNull(individualInfo['LayerNumber'])}
+											{' of '}
 											{!numberOfLayersIsLoading ? (
-												sameOrNull(individualInfo['LayerNumber']) +
-												' of ' +
-												sameOrNull(numberOfLayers) +
-												' (total)'
+												sameOrNull(numberOfLayers)
 											) : (
 												<i>Loading...</i>
-											)}
+											)}{' '}
+											(total)
 										</p>
 									</Row>
 								</ListGroup.Item>

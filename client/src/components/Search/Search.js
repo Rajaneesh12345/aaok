@@ -3,7 +3,7 @@ import './Search.css';
 import { getSearchResults } from '../../services/api';
 import { InfoPage } from '../InfoPage/InfoPage';
 import { SearchGuide } from '../SearchGuide/SearchGuide';
-import { SearchGuide_kr } from '../SearchGuide/SearchGuide_kr';
+import { SearchGuideKr } from '../SearchGuide/SearchGuideKr';
 import { LargePage } from '../LargePage/LargePage';
 import { SearchContext } from '../../contexts/SearchContext';
 import { routes } from '../../routes.js';
@@ -967,7 +967,7 @@ const Search = props => {
 					<Lang
 						isEn={props.isEn}
 						en={<SearchGuide />}
-						kr={<SearchGuide_kr />}
+						kr={<SearchGuideKr />}
 					/>
 				)}
 			/>

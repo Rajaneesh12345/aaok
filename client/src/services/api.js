@@ -1,4 +1,8 @@
 // filters of type: {advancedOptionsKey[string]: optionValue[Set<string>]}
+
+const url = 'http://localhost:5000';
+// const url = 'https://aaokbackend.onrsender.com';
+
 const getSearchResults = async (filters, sortOption) => {
 	// console.log('getSearchResults', filters);
 	let filtersAsArrays = {};
@@ -19,16 +23,13 @@ const getSearchResults = async (filters, sortOption) => {
 
 	let err = false;
 	// console.log(filters, sortOption);
-	const response = await fetch(
-		'https://aaokbackend.onrender.com/api/searchfiltered',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ filters: preparedFilters, sort: sortOption }),
-		}
-	);
+	const response = await fetch(`${url}/api/searchfiltered`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ filters: preparedFilters, sort: sortOption }),
+	});
 	// console.log(response);
 	if (!response.ok) {
 		err = true;
@@ -41,16 +42,13 @@ const getSearchResults = async (filters, sortOption) => {
 
 const getIndividualInfo = async id => {
 	let err = false;
-	const response = await fetch(
-		'https://aaokbackend.onrender.com/api/individual',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ id: id }),
-		}
-	);
+	const response = await fetch(`${url}/api/individual/${id}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		// body: JSON.stringify({ id: id }),
+	});
 	if (!response.ok) {
 		err = true;
 	}
@@ -61,14 +59,11 @@ const getIndividualInfo = async id => {
 
 const getIndividualImg = async id => {
 	let err = false;
-	const response = await fetch(
-		`https://aaokbackend.onrender.com/api/img/${id}`,
-		{
-			headers: {
-				'Cache-Control': 'public, max-age=604800, immutable',
-			},
-		}
-	);
+	const response = await fetch(`${url}/api/img/${id}`, {
+		headers: {
+			'Cache-Control': 'public, max-age=604800, immutable',
+		},
+	});
 	if (!response.ok) {
 		err = true;
 	}
@@ -79,40 +74,35 @@ const getIndividualImg = async id => {
 
 const getOthersInCluster = async cid => {
 	let err = false;
-	const response = await fetch(
-		`https://aaokbackend.onrender.com/api/in-cluster/${cid}`
-	);
+	const response = await fetch(`${url}/api/in-cluster/${cid}`);
 	if (!response.ok) {
 		err = true;
 	}
-	const data = (await response.json())[0];
+	const data = await response.json();
 	// console.log('otherInCluster', data);
 	return [data, err];
 };
 
 const getRelated = async pid => {
 	let err = false;
-	const response = await fetch(
-		`https://aaokbackend.onrender.com/api/related/${pid}`
-	);
+	const response = await fetch(`${url}/api/related/${pid}`);
 	if (!response.ok) {
 		err = true;
 	}
-	const data = (await response.json())[0];
+	const data = await response.json();
 	// console.log('related', data);
 	return [data, err];
 };
 
 const getNumberOfLayers = async cid => {
 	let err = false;
-	const response = await fetch(
-		`https://aaokbackend.onrender.com/api/number-of-layers/${cid}`
-	);
+	const response = await fetch(`${url}/api/number-of-layers/${cid}`);
 	if (!response.ok) {
 		err = true;
 	}
-	const data = (await response.json())[0];
-	// console.log('otherInCluster', data);
+	// console.log('response', response);
+	const data = await response.json();
+	// console.log('layers', data);
 	return [data, err];
 };
 
