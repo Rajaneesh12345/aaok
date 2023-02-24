@@ -1,7 +1,7 @@
 // filters of type: {advancedOptionsKey[string]: optionValue[Set<string>]}
 
-const url = 'http://localhost:5000';
-// const url = 'https://aaokbackend.onrsender.com';
+// const url = 'http://localhost:5000';
+const url = 'https://aaokbackend.onrender.com';
 
 const getSearchResults = async (filters, sortOption) => {
 	// console.log('getSearchResults', filters);
