@@ -1,140 +1,140 @@
 body {
-  --backgroundColor: rgba(50, 43, 38, 0.9);
-  --accentOne: #574941;
-  --accentTwo: #655749;
-  --accentThree: #b2aaa5;
-  --navbarHeight: 48px;
+	--backgroundColor: rgba(50, 43, 38, 0.9);
+	--accentOne: #574941;
+	--accentTwo: #655749;
+	--accentThree: #b2aaa5;
+	--navbarHeight: 48px;
 
-  width: 100%;
-  height: 100%;
-  position: fixed;
+	width: 100%;
+	height: 100%;
+	position: fixed;
 }
 
 h1 {
-  font-weight: bold !important;
+	font-weight: bold !important;
 }
 
 .footer {
-  width: calc(30px + 100%);
-  height: 30px;
-  background-color: rgba(50, 43, 38, 1);
-  margin-left: -15px;
-  margin-top: 1rem;
-  margin-right: -15px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+	width: calc(30px + 100%);
+	height: 30px;
+	background-color: rgba(50, 43, 38, 1);
+	margin-left: -15px;
+	margin-top: 1rem;
+	margin-right: -15px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
 }
 
 @media (min-width: 1200px) {
-  body {
-    --navbarHeight: 30px;
-  }
+	body {
+		--navbarHeight: 30px;
+	}
 }
 
 #root {
-  height: 100%;
+	height: 100%;
 }
 
 .App {
-  background-image: url("media/landing-resized.jpg");
-  background-size: cover;
-  height: 100%;
-  width: inherit;
-  color: white;
-  font-size: 1rem;
+	background-image: url('https://client-static-files-front-end.s3.us-east-2.amazonaws.com/media/landing-resized.jpg');
+	background-size: cover;
+	height: 100%;
+	width: inherit;
+	color: white;
+	font-size: 1rem;
 }
 
 .columns-2,
 .columns-3 {
-  column-count: unset;
+	column-count: unset;
 }
 
 .copyright {
-  position: relative;
-  bottom: 0px;
-  font-size: 0.75rem;
-  padding-left: 5px;
+	position: relative;
+	bottom: 0px;
+	font-size: 0.75rem;
+	padding-left: 5px;
 }
 
 .footnotes {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .footnote {
-  font-size: 0.75rem;
+	font-size: 0.75rem;
 }
 
 @media (min-width: 1000px) {
-  .columns-2 {
-    column-count: 2;
-  }
+	.columns-2 {
+		column-count: 2;
+	}
 
-  .columns-3 {
-    column-count: 3;
-  }
+	.columns-3 {
+		column-count: 3;
+	}
 }
 
 .bg-color {
-  background-color: var(--backgroundColor);
+	background-color: var(--backgroundColor);
 }
 
 .accent-one {
-  background-color: var(--accentOne);
+	background-color: var(--accentOne);
 }
 
 .accent-one-t9 {
-  background-color: rgba(87, 73, 65, 0.9);
+	background-color: rgba(87, 73, 65, 0.9);
 }
 
 .accent-two {
-  background-color: var(--accentTwo);
+	background-color: var(--accentTwo);
 }
 
 .accent-three {
-  background-color: var(--accentThree);
+	background-color: var(--accentThree);
 }
 
 .accent-three-t5 {
-  background-color: rgba(178, 170, 165, 0.5);
+	background-color: rgba(178, 170, 165, 0.5);
 }
 
 .cyan-btn {
-  background-color: #42cbf5 !important;
-  border-color: #42cbf5 !important;
+	background-color: #42cbf5 !important;
+	border-color: #42cbf5 !important;
 }
 
 .cyan-btn:hover {
-  background-color: #63d5f7 !important;
-  border-color: #63d5f7 !important;
+	background-color: #63d5f7 !important;
+	border-color: #63d5f7 !important;
 }
 
 .cyan-btn:focus {
-  background-color: #42cbf5 !important;
-  border-color: #42cbf5 !important;
+	background-color: #42cbf5 !important;
+	border-color: #42cbf5 !important;
 }
 
 .round-bg {
-  border-radius: 0.75rem !important;
+	border-radius: 0.75rem !important;
 }
 
 .centered-row {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 }
 
 .centered-column {
-  display: flex;
-  flex-flow: column wrap;
-  align-content: center;
+	display: flex;
+	flex-flow: column wrap;
+	align-content: center;
 }
 
 .centered-text {
-  display: flex;
-  flex-flow: column nowrap;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: center;
+	justify-content: center;
+	text-align: center;
 }

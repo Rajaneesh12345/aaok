@@ -20,22 +20,26 @@ exports.search = (req, res) => {
 				string += `WHERE ${ref.Calligraphy} IN (${calligraphy + ''}) `;
 				continue;
 			} else {
-				string += `WHERE people.PersonId is NOT NULL `;
+				string += `WHERE P.PersonId is NOT NULL `;
 			}
 		}
 		if (key === 'Inscription Type' && advancedFilters[key].length >= 1) {
 			advancedFilters[key].map(i => {
 				if (i === 'agnatic') {
-					string += `AND isAgnatic = 1 `;
+					string += `AND C.IsAgnaticCluster = 1 `;
 					return 'IsAgnatic';
 				}
 				if (i === 'agnaticAssociative') {
-					string += `AND IsAgnaticAssociative = 1 `;
+					string += `AND C.IsAgnaticAssociativeCluster = 1 `;
 					return 'IsAgnaticAssociative';
 				}
 				if (i === 'associative') {
-					string += `AND IsAssociative = 1 `;
+					string += `AND C.IsAssociateCluster = 1 `;
 					return 'IsAssociative';
+				}
+				if (i === 'singleName') {
+					string += `AND C.IsSingleName = 1 `;
+					return;
 				}
 			});
 			continue;
@@ -43,17 +47,24 @@ exports.search = (req, res) => {
 		if (key === 'Government Post' && advancedFilters[key].length >= 1) {
 			string += `AND ${ref['Government Post']} REGEXP "${advancedFilters[
 				key
-			].reduce((acc, curr) => {
+			].reduce((acc, curr, i, arr) => {
+				if (i === arr.length - 1) return (acc += curr);
 				acc += curr + '|';
 				return acc;
 			}, '')}" `;
 		}
 		if (key === 'Location' && advancedFilters[key].length >= 1) {
+			if (advancedFilters[key][0] === 'locUndeterminedOther') {
+				string += `AND L.LocationEngl NOT REGEXP "jade Stream Ravine|manmulch/'o|myogilsang Buddha|nine Dragon Falls|Podŏk Hermitage|tenThousand Falls Ravine|three Buddha Rock"`;
+				continue;
+			}
 			string += `AND ${ref.Location} REGEXP "${advancedFilters[key].reduce(
-				(acc, curr) => {
+				(acc, curr, i, arr) => {
+					if (i === arr.length - 1) return (acc += curr);
 					acc += curr + '|';
 					return acc;
-				}
+				},
+				''
 			)}" `;
 		}
 		if (key === 'Social Status' && advancedFilters[key].length >= 1) {
@@ -69,7 +80,8 @@ exports.search = (req, res) => {
 		if (key === 'Degree Holders' && advancedFilters[key].length >= 1) {
 			string += `AND ${ref['Degree Holders']} REGEXP "${advancedFilters[
 				key
-			].reduce((acc, curr) => {
+			].reduce((acc, curr, i, arr) => {
+				if (i === arr.length - 1) return (acc += curr);
 				acc += curr + '|';
 				return acc;
 			}, '')}" `;
@@ -77,13 +89,17 @@ exports.search = (req, res) => {
 		if (key === 'Travel Period' && advancedFilters[key].length >= 1) {
 			string += `AND ${ref['Travel Period']} REGEXP "${advancedFilters[
 				key
-			].reduce((acc, curr) => {
+			].reduce((acc, curr, i, arr) => {
+				if (i === arr.length - 1) return (acc += curr);
 				acc += curr + '|';
 				return acc;
 			}, '')}" `;
 		}
 	}
 	// console.log(string);
+	if (nameFilter) {
+		string += `AND P.NameEnglish REGEXP "${nameFilter}" `;
+	}
 	switch (sort) {
 		case 'Name (A-Z)':
 			string += `ORDER BY NameEnglish ASC`;
@@ -106,6 +122,7 @@ exports.search = (req, res) => {
 		default:
 			string += ``;
 	}
+	// console.log(string);
 	connection.query(string, (err, result) => {
 		if (err) {
 			console.log(err);
@@ -126,7 +143,7 @@ exports.getIndividualInfo = (req, res) => {
 	const { id } = req.params;
 	// console.log('id', id);
 	const connection = getNewConnectionObject();
-	connection.query(`${str} WHERE people.PersonId="${id}"`, (err, result) => {
+	connection.query(`${str} WHERE P.PersonId="${id}"`, (err, result) => {
 		if (err) {
 			console.log(err);
 			return res.status(200).json({

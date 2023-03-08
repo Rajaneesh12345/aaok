@@ -425,6 +425,7 @@ const Search = props => {
 	const [nameFilterValue, setNameFilterValue] = useState('');
 	const [sortOption, setSortOption] = useState(sortOptions.relevance);
 	const [isLoading, setIsLoading] = useState(false);
+	// const [clear, setClear] = useState(false);
 	const { path } = useRouteMatch();
 
 	const getAdjacentPersonIds = index => {
@@ -492,6 +493,14 @@ const Search = props => {
 				alert('Error fetching results. Please try again.');
 				throw e;
 			});
+	};
+	// when clear button is clicked
+	const clearAll = () => {
+		setNameFilterValue('');
+		setSortOption(sortOptions.relevance);
+		setSearchResults([]);
+		// refresh the page
+		window.location.reload();
 	};
 	// return type: {advancedFiltersKey[string]: optionValue[Set<string>]}
 	const mapFilterArraysToSets = enabledSearchFilters => {
@@ -619,39 +628,8 @@ const Search = props => {
 													</button>
 												</SearchToggle>
 											</InputGroup>
-											<Dropdown
-												className="mt-2"
-												onSelect={handleSortSelect}
-											>
-												<span className="badge">
-													<Lang
-														isEn={props.isEn}
-														en={'Sort: ' + sortOption}
-														kr={'특정 순서로 정렬'}
-													/>
-												</span>
-												<Dropdown.Toggle
-													text={sortOption}
-													variant=""
-													as={SortDropdown}
-													id="dropdown-basic-components"
-												/>
-												<Dropdown.Menu className="super-colors">
-													{Object.keys(sortOptions).map(
-														(key, i) => (
-															<Dropdown.Item
-																as="button"
-																key={i}
-																eventKey={key}
-															>
-																{sortOptions[key]}
-															</Dropdown.Item>
-														)
-													)}
-												</Dropdown.Menu>
-											</Dropdown>
 
-											<div>
+											<div className="mt-2">
 												<span className="badge">
 													<Lang
 														isEn={props.isEn}
@@ -793,6 +771,49 @@ const Search = props => {
 												</Accordion.Collapse>
 											</div>
 										</Accordion>
+										<Dropdown
+											// className="mt-2"
+											onSelect={handleSortSelect}
+										>
+											<div className="d-flex justify-content-between ">
+												<div>
+													<span className="badge">
+														<Lang
+															isEn={props.isEn}
+															en={'Sort: ' + sortOption}
+															kr={'특정 순서로 정렬'}
+														/>
+													</span>
+													<Dropdown.Toggle
+														text={sortOption}
+														variant=""
+														as={SortDropdown}
+														id="dropdown-basic-components"
+													/>
+												</div>
+
+												<Dropdown.Menu className="super-colors">
+													{Object.keys(sortOptions).map(
+														(key, i) => (
+															<Dropdown.Item
+																as="button"
+																key={i}
+																eventKey={key}
+															>
+																{sortOptions[key]}
+															</Dropdown.Item>
+														)
+													)}
+												</Dropdown.Menu>
+
+												<Button
+													className="btn orange px-3"
+													onClick={() => clearAll()}
+												>
+													Clear
+												</Button>
+											</div>
+										</Dropdown>
 									</Row>
 								</Col>
 							</div>
@@ -1031,12 +1052,12 @@ function ResultRow(props) {
 			</Col>
 			<Col xs={12} sm={4}>
 				<p>
-					{check(props.row['SubLocationEngl']) + ', '}
+					{check(props.row['SublocationEngl']) + ', '}
 					<br />
 					{check(props.row['LocationEngl'])}
 					<div style={{ fontSize: '.7rem' }}>
 						<br />
-						{check(props.row['SublocationEnglTranslit']) +
+						{check(props.row['SubLocationEnglTranslit']) +
 							', ' +
 							check(props.row['LocationEnglTranslit'])}
 						<br />

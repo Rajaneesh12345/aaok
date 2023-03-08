@@ -65,8 +65,8 @@ const InfoPage = props => {
 					// 	return;
 					// }
 					setImgIsLoading(false);
-					if (individualInfo['link']) {
-						setImg(individualInfo['link']);
+					if (individualInfo['Link']) {
+						setImg(individualInfo['Link']);
 					} else {
 						setImg('/none.png');
 					}
@@ -403,16 +403,6 @@ const InfoPage = props => {
 											</Row>
 											<Row>
 												<Col xs={4}>
-													<p>Yangban: </p>
-												</Col>
-												<Col xs={8}>
-													{yesNoOrNull(
-														individualInfo['IsYangban']
-													)}
-												</Col>
-											</Row>
-											<Row>
-												<Col xs={4}>
 													<p>Chungin: </p>
 												</Col>
 												<Col xs={8}>
@@ -441,10 +431,48 @@ const InfoPage = props => {
 											</Row>
 											<Row>
 												<Col xs={4}>
+													<p>Marginalized Yangban: </p>
+												</Col>
+												<Col xs={8}>
+													{yesNoOrNull(
+														individualInfo[
+															'IsMarginalizedYangban'
+														]
+													)}
+												</Col>
+											</Row>
+											<Row>
+												<Col xs={4}>
 													<p>Monk: </p>
 												</Col>
 												<Col xs={8}>
 													{yesNoOrNull(individualInfo['IsMonk'])}
+												</Col>
+											</Row>
+											<Row>
+												<Col xs={4}>
+													<p>Slave: </p>
+												</Col>
+												<Col xs={8}>
+													{yesNoOrNull(individualInfo['IsSlave'])}
+												</Col>
+											</Row>
+											<Row>
+												<Col xs={4}>
+													<p>Yangban: </p>
+												</Col>
+												<Col xs={8}>
+													{yesNoOrNull(
+														individualInfo['IsYangban']
+													)}
+												</Col>
+											</Row>
+											<Row>
+												<Col xs={4}>
+													<p>Undetermined: </p>
+												</Col>
+												<Col xs={8}>
+													{yesNoOrNull(individualInfo['IsSlave'])}
 												</Col>
 											</Row>
 										</Col>
@@ -459,7 +487,7 @@ const InfoPage = props => {
 										<h5>Location:</h5>
 										<br />
 										<p>
-											{sameOrNull(individualInfo['SubLocationEngl'])}
+											{sameOrNull(individualInfo['SublocationEngl'])}
 											{','}
 											<br />
 											{sameOrNull(individualInfo['LocationEngl'])}
@@ -468,7 +496,7 @@ const InfoPage = props => {
 												<span>
 													{sameOrNull(
 														individualInfo[
-															'SublocationEnglTranslit'
+															'SubLocationEnglTranslit'
 														]
 													)}
 													{', '}
@@ -507,7 +535,7 @@ const InfoPage = props => {
 										<p>{clusterType(individualInfo)}</p>
 									</Row>
 								</ListGroup.Item>
-								<ListGroup.Item>
+								{/* <ListGroup.Item>
 									<Row>
 										<h5>Layer in Cluster:</h5>
 										<br />
@@ -522,7 +550,7 @@ const InfoPage = props => {
 											(total)
 										</p>
 									</Row>
-								</ListGroup.Item>
+								</ListGroup.Item> */}
 								<ListGroup.Item>
 									<Row>
 										<h5>Individuals in Cluster:</h5>

@@ -56,7 +56,7 @@ const App = () => {
 	const setSearchResults = searchResults => {
 		window.localStorage.setItem(
 			'searchResults',
-			JSON.stringify(searchResults)
+			JSON.stringify(searchResults.slice(0, 2000))
 		);
 		_nocall_setSearchResults(searchResults);
 	};
